@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title BufferApp
+
+    each val in assets.vendorStyles
+      link(rel="stylesheet", href=val)
+
+    each val in assets.styles
+      link(rel="stylesheet", href=val)
+
+  body(ng-app="bufferApp")
+    
+    each val in assets.vendorScripts
+      script(src=val)
+
+    each val in assets.scripts
+      script(src=val)
