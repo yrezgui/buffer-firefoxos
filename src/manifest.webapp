@@ -1,0 +1,39 @@
+{
+  "name": "Buffer",
+  "description": "Buffer client for Firefox OS",
+  "launch_path": "/index.html",
+  "type": "privileged",
+  "version": "0.0.1",
+  "icons": {
+    "32": "/img/buffer-icon-32.png",
+    "60": "/img/buffer-icon-60.png",
+    "90": "/img/buffer-icon-90.png",
+    "120": "/img/buffer-icon-120.png",
+    "128": "/img/buffer-icon-128.png",
+    "256": "/img/buffer-icon-256.png"
+  },
+  "developer": {
+    "name": "Yacine Rezgui",
+    "url": "http://www.yrezgui.com"
+  },
+  "default_locale": "en",
+  "origin": "app://buffer.yrezgui.com",
+  "permissions": {
+    "browser": {
+      "description": "Required to open the links of your social status"
+    },
+    "device-storage:pictures": {
+      "description": "Required to send status with photos as attachments",
+      "access": "readonly"
+    },
+    "push": {
+      "description": "Required to tell you when your status have been sent"
+    },
+    "storage": {
+      "description": "Required to cache data to use the app offline"
+    },
+    "systemXHR": {
+      "description": "Required to request the different social systems"
+    }
+  }
+}
