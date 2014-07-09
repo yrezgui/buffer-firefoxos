@@ -1,0 +1,34 @@
+{
+  "name": "buffer-firefoxos",
+  "version": "0.0.0",
+  "description": "Buffer client for FirefoxOS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yrezgui/buffer-firefoxos.git"
+  },
+  "keywords": [
+    "buffer",
+    "twitter",
+    "linkedin",
+    "facebook",
+    "google+",
+    "firefoxos",
+    "html5",
+    "mobile",
+    "angularjs"
+  ],
+  "author": "Yacine Rezgui <rezgui.y@gmail.com>",
+  "license": "Apache Licence v2",
+  "bugs": {
+    "url": "https://github.com/yrezgui/buffer-firefoxos/issues"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.5",
+    "gulp-jade": "~0.6.1",
+    "gulp-less": "~1.3.1"
+  }
+}
