@@ -35,5 +35,11 @@
     "systemXHR": {
       "description": "Required to request the different social systems"
     }
-  }
+  },
+  "redirects": [
+    {
+      "from": "http://www.yrezgui.com/buffer-firefoxos/",
+      "to": "/index.html"
+    }
+  ]
 }
