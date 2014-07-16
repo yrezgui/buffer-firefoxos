@@ -58,7 +58,7 @@ gulp.task('scripts', function scriptsTask() {
 gulp.task('fonts', function fontsTask() {
   return es.concat(
     gulp.src(config.path.fonts),
-    gulp.src(config.vendor.fonts).pipe(changeFolder('vendor'))
+    gulp.src(config.vendor.fonts).pipe(changeFolder('vendor/fonts'))
 
   ).pipe(gulp.dest(config.path.build));
 });
