@@ -1,5 +1,5 @@
 doctype html
-html
+html(ng-app="bufferApp")
   head
     meta(charset="utf-8")
     title BufferApp
@@ -10,8 +10,9 @@ html
     each val in assets.styles
       link(rel="stylesheet", href=val)
 
-  body(ng-app="bufferApp")
-    
+  body
+    ui-view
+      
     each val in assets.vendorScripts
       script(src=val)
 
