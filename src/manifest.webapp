@@ -26,7 +26,7 @@
       "description": "Required to send status with photos as attachments",
       "access": "readonly"
     },
-    "push": {
+    "desktop-notification": {
       "description": "Required to tell you when your status have been sent"
     },
     "storage": {
