@@ -39,7 +39,7 @@
   "redirects": [
     {
       "from": "http://www.yrezgui.com/buffer-firefoxos/",
-      "to": "/index.html"
+      "to": "/index.html#start"
     }
   ]
 }
