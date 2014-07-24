@@ -7,6 +7,7 @@ var es          = require('event-stream');
 var path        = require('path');
 var runSequence = require('run-sequence');
 var _           = require('lodash');
+var template    = require('gulp-template');
 
 var assetsMap = {};
 
@@ -55,6 +56,20 @@ gulp.task('scripts', function scriptsTask() {
   ).pipe(gulp.dest(config.path.build));
 });
 
+gulp.task('configScripts', function scriptsTask() {
+  return gulp.src(config.path.configScripts)
+              .pipe(template({ config: config }))
+              .pipe(es.map(function (file, cb) {
+                
+                // Change extension from .cfg to .js
+                file.path = file.path.slice(0, -4) + '.js';
+
+                cb(null, file);
+              }))
+             .pipe(updateAssetsMap('scripts'))
+             .pipe(gulp.dest(config.path.build));
+});
+
 gulp.task('fonts', function fontsTask() {
   return es.concat(
     gulp.src(config.path.fonts),
@@ -100,7 +115,7 @@ gulp.task('views', function viewsTask(callback) {
 gulp.task('build', function buildTask(callback) {
   return runSequence(
     'clean',
-    ['manifest', 'scripts', 'fonts', 'images', 'styles'],
+    ['manifest', 'scripts', 'configScripts', 'fonts', 'images', 'styles'],
     'views',
     callback
   );
@@ -121,6 +136,10 @@ gulp.task('watch', ['build'], function watchTask(callback){
 
   gulp.watch(config.path.scripts, function watchScripts(event) {
     return runSequence('scripts', 'views');
+  });
+
+  gulp.watch(config.path.configScripts, function watchScripts(event) {
+    return runSequence('configScripts', 'views');
   });
 });
 
