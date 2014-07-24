@@ -1,5 +1,6 @@
 # Buffer for Firefox OS
 
+![screenshot](screenshot.png)
 
 ### How to setup the development environment
 
