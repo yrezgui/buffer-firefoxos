@@ -1,9 +1,18 @@
 angular.module('bufferApp', [
-  'pouchdb',
   'ngTouch',
   'ngAnimate',
   'ngSanitize',
   'ui.router',
+  'angular-data.DSCacheFactory',
+  'components.utils',
+  'components.config',
+  'components.localStorage',
+  'components.notifications',
+  'components.oauth',
+  'components.bufferApi',
+  'bufferApp.login',
+  'bufferApp.start',
+  'bufferApp.profile'
 ])
 
   .config(['$compileProvider', '$urlRouterProvider', '$stateProvider', function config($compileProvider, $urlRouterProvider, $stateProvider) {
