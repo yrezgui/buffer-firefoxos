@@ -1,0 +1,72 @@
+section(data-type="sidebar")
+  header
+    h1
+      | Social Profiles 
+      em ({{profiles.length}})
+  nav
+    ul(data-type="list")
+      li(ng-repeat="profile in profiles", ui-sref-active="active")
+        aside.pack-end
+          img(ng-src="{{profile.avatar}}")
+        a(ui-sref="profile({ profileId: profile._id })")
+          p {{profile.formatted_username}}
+          p
+            small {{profile.formatted_service}}
+
+    h2 More actions
+
+    ul
+      li
+        a(href="#") App version 1.2.3
+      li
+        a(href="#") About the author
+      li
+        a(href="#") Logout
+
+section.updates-page.skin-dark(role="region", ng-class="{'active-view': showSidebar}")
+  header
+    button(ng-click="showSidebar = !showSidebar")
+      span.icon.icon-menu toggle sidebar
+
+    menu(type="toolbar")
+      button(ng-click="composeStatus()")
+        span.icon.icon-compose Compose
+
+    h1.page-title
+      img(ng-src="{{currentProfile.avatar}}")
+        
+      span(ng-hide="showSentTab")
+        | Queue 
+        em ({{pendingUpdates.length}})     
+
+      span(ng-show="showSentTab")
+        | Sent 
+        em ({{sentUpdates.length}})
+  progress.pack-activity(ng-show="loadingData", value="0", max="100")
+
+  ul.bb-tablist.skin-grey(role="tablist", data-type="filter")
+    li(ng-class="{active: !showSentTab}", role="presentation")
+      a(role="tab", ng-click=" showTab('pending') ") Pending
+    li(ng-class="{active: showSentTab}", role="presentation")
+      a(role="tab", ng-click=" showTab('sent') ") Sent
+
+  ul.scrollable(ng-hide="showSentTab", data-type="list")
+    li(ng-repeat="status in pendingUpdates", ng-click="showActionsMenu(status)")
+      section.text-formatted(ng-bind-html="status.text_formatted")
+      p.date
+        | Scheduled for {{status.due_at * 1000| date: 'EEEE, MMMM d'}} at {{status.due_time}}
+
+  ul.scrollable(ng-show="showSentTab", data-type="list")
+    li(ng-repeat="status in sentUpdates")
+      section.text-formatted(ng-bind-html="status.text_formatted")
+      p.date Scheduled for {{status.due_at * 1000| date: 'EEEE, MMMM d'}} at {{status.due_time}}
+
+
+//- Status actions
+form(ng-hide="actionsMenuHidden" role="dialog", data-type="action")
+  header Actions
+  menu
+    button(ng-click="shareNowStatus()") Share now
+    button(ng-click="deleteStatus()") Delete
+    button(ng-click="hideActionsMenu()") Cancel
+    
