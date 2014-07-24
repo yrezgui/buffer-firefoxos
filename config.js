@@ -1,13 +1,23 @@
 var config = module.exports = {};
 
+config.constants = {
+  BUFFER_API_URL: 'https://api.bufferapp.com/1/',
+  BUFFER_CLIENT_ID: '1234567890',
+  CONNECT_URL: 'https://bufferapp.com/oauth2/authorize',
+  REDIRECT_URI: 'http://www.google.co.uk',
+  EXCHANGE_OAUTH_CODE_URL: 'http://www.random.url',
+  TOKEN_KEY: 'accessToken'
+};
+
 config.path = {
-  build:    './www',
-  styles:   ['./src/**/*.less'],
-  scripts:  ['./src/**/*.js'],
-  views:    ['./src/**/*.jade'],
-  fonts:    ['./src/fonts/**/*'],
-  images:   ['./src/images/**/*'],
-  manifest: ['./src/manifest.webapp']
+  build:          './www',
+  styles:         ['./src/**/*.less'],
+  scripts:        ['./src/**/*.js'],
+  configScripts:  ['./src/**/*.cfg'],
+  views:          ['./src/**/*.jade'],
+  fonts:          ['./src/fonts/**/*'],
+  images:         ['./src/images/**/*'],
+  manifest:       ['./src/manifest.webapp']
 };
 
 config.vendor = {
