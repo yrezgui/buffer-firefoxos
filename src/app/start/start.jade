@@ -1,0 +1,11 @@
+form(role="dialog", data-type="confirm")
+  section
+    h1(role="status") Loading Buffer data
+    p.small
+      span(ng-show="currentStep === 0") Authentication token
+      span(ng-show="currentStep === 1") Account information
+      span(ng-show="currentStep === 2") Service configuration
+      span(ng-show="currentStep === 3") Social Profiles
+    progress.pack-activity(value="{{ currentStep }}", max="{{ totalSteps }}")
+    br
+    p {{currentUser.name}}
