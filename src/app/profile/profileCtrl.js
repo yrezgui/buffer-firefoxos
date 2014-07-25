@@ -3,7 +3,7 @@
 
   var mod = angular.module('bufferApp.profile', []);
 
-  mod.controller('ProfileCtrl', ['$scope', '$stateParams', 'OAuth', 'BufferApi', 'profiles', 'currentProfile', function ProfileCtrl($scope, $stateParams, OAuth, BufferApi, profiles, currentProfile) {
+  mod.controller('ProfileCtrl', ['$scope', '$stateParams', 'OAuth', 'BufferApi', 'profiles', 'currentProfile', 'Notifications', function ProfileCtrl($scope, $stateParams, OAuth, BufferApi, profiles, currentProfile, Notifications) {
 
     $scope.showSidebar        = false;
     $scope.showSentTab        = false;
@@ -53,16 +53,24 @@
     };
 
     $scope.shareNowStatus = function shareNowStatus() {
+      Notifications.create(null, 'Sharing...', null, 'share-now');
+
       return BufferApi.shareNow($scope.selectedStatus._id).then(function success() {
         $scope.showTab('pending', true);
         $scope.hideActionsMenu();
+
+        Notifications.create(null, 'Update successfully shared !', null, 'share-now');
       });
     };
 
     $scope.deleteStatus = function deleteStatus() {
+      Notifications.create(null, 'Deleting...', null, 'delete');
+
       return BufferApi.deleteStatus($scope.selectedStatus._id).then(function success() {
         $scope.showTab('pending', true);
         $scope.hideActionsMenu();
+
+        Notifications.create(null, 'Update successfully deleted !', null, 'delete');
       });
     };
 
