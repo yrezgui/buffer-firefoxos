@@ -57,7 +57,8 @@
 
     function logout() {
       if($window.confirm('Do you want to sign out?')) {
-        return LocalStorage.clear();
+        LocalStorage.clear();
+        return $state.go('login');
       }
     }
 
