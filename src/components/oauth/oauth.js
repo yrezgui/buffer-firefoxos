@@ -55,13 +55,20 @@
       return LocalStorage.get('accessToken');
     }
 
+    function logout() {
+      if($window.confirm('Do you want to sign out?')) {
+        return LocalStorage.clear();
+      }
+    }
+
     return {
       isConnected: isConnected,
       authorize: authorize,
       getConnectUrl: getConnectUrl,
       exchangeAccessToken: exchangeAccessToken,
       getCode: getCode,
-      getAccessToken: getAccessToken
+      getAccessToken: getAccessToken,
+      logout: logout
     };
   }]);
 

@@ -13,9 +13,14 @@
       return JSON.parse($window.localStorage.getItem(key));
     }
 
+    function clear() {
+      return $window.localStorage.clear();
+    }
+
     return {
       get: get,
-      set: set
+      set: set,
+      clear: clear
     };
   }]);
 
