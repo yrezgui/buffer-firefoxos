@@ -29,6 +29,8 @@
       }
     }
 
+    $scope.logout = OAuth.logout;
+
     $scope.showTab = function showTab(name, forceRefresh) {
       $scope.loadingData = true;
 

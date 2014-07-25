@@ -17,11 +17,9 @@ section(data-type="sidebar")
 
     ul
       li
-        a(href="#") App version 1.2.3
+        a(href="http://www.yrezgui.com", target="_blank") About the author
       li
-        a(href="#") About the author
-      li
-        a(href="#") Logout
+        a(ng-click="logout()") Logout
 
 section.updates-page.skin-dark(role="region", ng-class="{'active-view': showSidebar}")
   header
