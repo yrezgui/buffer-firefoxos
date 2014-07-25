@@ -23,60 +23,29 @@
         access_token: OAuth.getAccessToken()
       };
 
-      var xhr       = new $window.XMLHttpRequest();
-      var deferred  = $q.defer();
-
-      xhr.open(method, Config.BUFFER_API_URL + endpoint + '.json?' + Utils.stringify(_.extend(defaultParameters, params)), true);
-
-      xhr.onload = function onload() {
-        if (xhr.status === 200) {
-          var response = JSON.parse(xhr.responseText);
-
+      return $http({
+        method: method,
+        url: Config.BUFFER_API_URL + endpoint + '.json',
+        params: _.extend(defaultParameters, params),
+        data: data
+      }).then(
+        function success(response) {
           if(noCache) {
-            return deferred.resolve(response);
+            return response.data;
           }
 
-          cachedResource = dataCache.put(method + ' ' + endpoint, response);
+          cachedResource = dataCache.put(method + ' ' + endpoint, response.data);
 
-          return deferred.resolve(cachedResource);
-        } else {
+          return cachedResource;
+        },
+        function fail() {
           if(noCache) {
-            return deferred.reject(null);
+            return null;
           }
 
-          return deferred.reject(cachedResource);
+          return cachedResource;
         }
-      };
-
-      xhr.send(Utils.objectToFormData(data));
-
-      return deferred.promise;
-
-      
-
-      // return $http({
-      //   method: method,
-      //   url: Config.BUFFER_API_URL + endpoint + '.json',
-      //   params: _.extend(defaultParameters, params),
-      //   data: data
-      // }).then(
-      //   function success(response) {
-      //     if(noCache) {
-      //       return response.data;
-      //     }
-
-      //     cachedResource = dataCache.put(method + ' ' + endpoint, response.data);
-
-      //     return cachedResource;
-      //   },
-      //   function fail() {
-      //     if(noCache) {
-      //       return null;
-      //     }
-
-      //     return cachedResource;
-      //   }
-      // );
+      );
     }
 
     function getConfiguration(forceRefresh) {
