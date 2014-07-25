@@ -5,11 +5,12 @@
 
   mod.factory('Notifications', ['$window', function Notifications($window) {
 
-    function create(title, body, icon) {
+    function create(title, body, icon, tag) {
 
-      return new Notification(title, {
+      return new $window.Notification(title || 'Buffer', {
         body: body,
-        icon: icon || '/img/buffer-icon-32.png'
+        icon: $window.location.origin + (icon || '/img/buffer-icon-32.png'),
+        tag: tag
       });
     }
 
