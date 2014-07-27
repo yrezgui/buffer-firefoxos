@@ -3,7 +3,7 @@
 
   var mod = angular.module('bufferApp.profile', []);
 
-  mod.controller('ProfileCtrl', ['$scope', '$stateParams', 'OAuth', 'BufferApi', 'profiles', 'currentProfile', 'Notifications', function ProfileCtrl($scope, $stateParams, OAuth, BufferApi, profiles, currentProfile, Notifications) {
+  mod.controller('ProfileCtrl', ['$scope', '$stateParams', 'OAuth', 'BufferApi', 'Notifications', 'profiles', 'currentProfile', function ProfileCtrl($scope, $stateParams, OAuth, BufferApi, Notifications, profiles, currentProfile) {
 
     $scope.showSidebar        = false;
     $scope.showSentTab        = false;
