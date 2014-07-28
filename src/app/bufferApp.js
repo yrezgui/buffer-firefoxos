@@ -12,7 +12,8 @@ angular.module('bufferApp', [
   'components.bufferApi',
   'bufferApp.login',
   'bufferApp.start',
-  'bufferApp.profile'
+  'bufferApp.profile',
+  'bufferApp.compose'
 ])
 
   .config(['$urlRouterProvider', '$stateProvider', function config($urlRouterProvider, $stateProvider) {
@@ -54,6 +55,19 @@ angular.module('bufferApp', [
           }],
           currentProfile: ['BufferApi', function currentProfile(BufferApi) {
             return BufferApi.getCurrentProfile();
+          }]
+        }
+      })
+      .state('compose', {
+        url: '/compose',
+        templateUrl: 'app/compose/compose.html',
+        controller: 'ComposeCtrl',
+        resolve: {
+          profiles: ['BufferApi', function profiles(BufferApi) {
+            return BufferApi.getProfiles();
+          }],
+          configuration: ['BufferApi', function configuration(BufferApi) {
+            return BufferApi.getConfiguration();
           }]
         }
       });
