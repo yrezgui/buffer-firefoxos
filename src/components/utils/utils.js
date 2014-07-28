@@ -22,16 +22,16 @@
       var formData  = new $window.FormData();
 
       for(var i in data) {
-        if(_.isObject(data[i])) {
-
-          for(var j in data[i]) {
-            formData.append(i + '[' + j + ']', data[i][j]);
-          }
-
-        } else if(_.isArray(data[i])) {
+        if(_.isArray(data[i])) {
 
           for(var k in data[i]) {
             formData.append(i + '[]', data[i][k]);
+          }
+
+        } else if(_.isObject(data[i])) {
+
+          for(var j in data[i]) {
+            formData.append(i + '[' + j + ']', data[i][j]);
           }
 
         } else {
