@@ -94,6 +94,19 @@
       return makeRequest('POST', 'updates/' + id + '/destroy', true, null, null, true);
     }
 
+    function createUpdate(body, selectedProfileIds) {
+      var data = {
+        text: body,
+        profile_ids: selectedProfileIds
+      };
+
+      return makeRequest('POST', 'updates/create', true, null, data, true);
+    }
+
+    function clearCache() {
+      dataCache.removeAll();
+    }
+
     return {
       getConfiguration: getConfiguration,
       getUser: getUser,
@@ -104,7 +117,9 @@
       getProfileById: getProfileById,
       getCurrentProfile: getCurrentProfile,
       shareNow: shareNow,
-      deleteStatus: deleteStatus
+      deleteStatus: deleteStatus,
+      createUpdate: createUpdate,
+      clearCache: clearCache
     };
   }]);
 
