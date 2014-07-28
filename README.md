@@ -1,6 +1,6 @@
 # Buffer for Firefox OS
 
-![screenshot](screenshot.png)
+![screenshot1](screenshot1.png)
 
 ### How to setup the development environment
 
@@ -16,3 +16,22 @@
 8. Launch ```gulp``` in the root folder of the app
 9. Start ```python -m SimpleHTTPServer``` in the root folder of the app
 10. Go to this address [http://localhost:8000/www/](http://localhost:8000/www/)
+
+
+### Screenshots
+
+![screenshot1](screenshot1.png)
+![screenshot2](screenshot2.png)
+![screenshot3](screenshot3.png)
+
+
+### TO DO
+
+1. Add animations to make it smooth
+2. Deploy it on the FirefoxOS marketplace (I'm waiting my flame to try on it first)
+3. Use MozSystem property instead of local CORS proxy
+4. Be able to edit posts
+5. Add scheduling for sharing post (Buffering is the only option now)
+6. Display media objects
+7. Add media objects when sharing a post
+8. Add Web Activity to allow sharing from other apps
