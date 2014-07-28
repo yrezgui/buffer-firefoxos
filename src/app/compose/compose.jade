@@ -1,0 +1,24 @@
+section.compose-page.skin-dark(role="region")
+  header(ng-class="{'on-writing': writing}")
+
+    button(ui-sref="profile({ profileId: profiles[0]._id })")
+      span.icon.icon-close Cancel
+
+    menu(type="toolbar")
+      button(ng-class="{disabled: loading || statusBody.length === 0}", ng-click="buffer()")
+        span.icon.icon-send Buffer
+
+    h1 Share
+  progress.pack-activity(ng-show="loading", value="0", max="100")
+
+  textarea.scroll(auto-size-textarea, ng-class="{'on-writing': writing}", ng-model="statusBody", placeholder="What would you like to share?", ng-focus="writing = true", ng-blur="writing = false")
+
+  footer(ng-hide="writing")
+    span.selected-profiles(select-opener)
+      img(ng-src="{{selectedProfiles[0].avatar}}")
+      |&nbsp;{{selectedProfiles[0].formatted_username}} 
+      |{{ selectedProfiles.length > 1 ? ' + '  + (selectedProfiles.length - 1) + ' more' : ''}}
+
+    span.remaining(ng-class="{'too-much': getRemainingCount() < 0}") {{ getRemainingCount() }}
+
+    select(multiple="true", ng-model="selectedProfiles", ng-options="(profile.formatted_username + ' (' + profile.formatted_service + ')') for profile in profiles")

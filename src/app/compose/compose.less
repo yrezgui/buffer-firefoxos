@@ -1,0 +1,61 @@
+.compose-page {
+
+  header.on-writing {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+  }
+
+  button.disabled {
+    opacity: 0.3;
+  }
+
+  textarea {
+    color: #2C363E;
+    max-height: none;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+
+    &.on-writing {
+      top: 5.5rem;
+      position: fixed;
+    }
+  }
+
+  select {
+    opacity: 0;
+  }
+
+  footer {
+    color: #2C363E;
+    padding: 0 1rem 1rem;
+
+    span {
+      position: absolute;
+      padding: 0.6rem;
+      font-size: 1.3rem;
+
+      img {
+        vertical-align: middle;
+        border-radius: 50%;
+        width: 2.5em;
+      }
+
+      &.selected-profiles {
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.4);
+        padding-bottom: 0.3rem;
+      }
+
+      &.remaining {
+        right: 1rem;
+        background: #EAEFF2;
+        margin-top: 0.7rem;
+
+        &.too-much {
+          color: #ff5a5f;
+        }
+      }
+    }
+  }
+}
